@@ -1,0 +1,49 @@
+bitstuffing.reminder-box {
+    background-color: #2e3440; /* Background color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    color: white;
+    font-family: Arial, sans-serif; /* Font style */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow to highlight */
+}
+
+.button {
+    background-color: #5e81ac; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #81a1c1; /* Color change on hover */
+}
+
+.note-actor {
+    background-color: rgba(255, 255, 102, 0.8); 
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #CCCC00;
+}
+
+.note-label {
+    font-size: 14px;
+    color: #333333;
+}
+
+.note-textview {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    min-width: 300px;
+    min-height: 150px;
+}

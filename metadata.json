@@ -1,0 +1,9 @@
+{
+    "uuid": "reminder@bitstuffing.github.io",
+    "name": "Reminder",
+    "description": "A widget that performs some operations integrated in status bar",
+    "version": 1,
+    "shell-version": ["42"],
+    "url": "https://github.com/bitstuffing/reminder",
+    "settings-schema": "org.gnome.shell.extensions.bitstuffing.reminder"
+}
