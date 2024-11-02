@@ -1,7 +1,7 @@
 # Reminder
 
 ### Description
-Reminder is a widget for Gnome Shell 42, which offers several useful functionalities:
+Reminder is a widget for Gnome Shell 42, which has been migrated to 47. It offers several useful functionalities:
 
 ### Features (currently)
 1. **Pydummy**: Automatically moves the mouse every few seconds in a random pattern to prevent the screen from turning off or to keep an application active.
@@ -9,7 +9,7 @@ Reminder is a widget for Gnome Shell 42, which offers several useful functionali
 3. **Notes**: Displays notes on the screen, similar to "post-its" from Windows 7, to remember tasks or important information.
 
 ### Development
-By surprise, gnome-shell change his way to develop in 45 version, and latest production version is 47.2, so ... if you want to use it, please downgrade it or wait for finished development.
+Migration to 47.2, sorry
 
 ### Author
 This widget was developed by @bitstuffing with love under MIT license.

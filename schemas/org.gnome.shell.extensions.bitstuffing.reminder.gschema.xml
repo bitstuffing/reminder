@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="my-widget">
   <schema id="org.gnome.shell.extensions.bitstuffing.reminder" path="/org/gnome/shell/extensions/reminder/">
-    <key name="update-interval" type="i">
-      <default>10</default>
-      <summary>Update Interval</summary>
-      <description>Interval to update in seconds.</description>
-    </key>
-    <key name="mouse-smoothness" type="i">
-      <default>2</default>
-      <summary>Mouse Smoothness</summary>
-      <description>Smoothness of mouse movement in seconds.</description>
-    </key>
-    <!-- Notes-->
-    <key name="notes-data" type="s">
-      <default>"[]"</default>
-      <summary>Note data</summary>
-      <description>Serialized data in JSON format for notes</description>
+    <key name="pydummy-enabled" type="b">
+      <default>false</default>
+      <summary>Enable Pydummy Feature</summary>
+      <description>Controls whether the Pydummy feature is enabled or not.</description>
     </key>
   </schema>
 </schemalist>

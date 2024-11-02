@@ -11,6 +11,7 @@ function install_extension() {
     cp ./stylesheet.css "$EXTENSION_DIR/stylesheet.css"
     cp ./extension.js "$EXTENSION_DIR/extension.js"
     cp ./prefs.js "$EXTENSION_DIR/prefs.js"
+    cp ./pydummyHandler.js "$EXTENSION_DIR/pydummyHandler.js"
     cp -r schemas "$EXTENSION_DIR/schemas"
 
     gnome-extensions enable reminder@bitstuffing.github.io
