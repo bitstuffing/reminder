@@ -5,5 +5,6 @@
     "version": 2,
     "shell-version": ["47"],
     "url": "https://github.com/bitstuffing/reminder",
-    "settings-schema": "org.gnome.shell.extensions.bitstuffing.reminder"
+    "settings-schema": "org.gnome.shell.extensions.reminder",
+    "schema-directory": "schemas"
 }

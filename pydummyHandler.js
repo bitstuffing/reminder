@@ -1,16 +1,16 @@
-// SPDX-License-Identifier: MIT
-
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 
 export class PydummyHandler {
-    constructor() {
+    constructor(settings) {
         this._pydummyTimeout = null;
+        this._settings = settings;
     }
 
     handlePydummy(enabled) {
         if (enabled) {
-            this._pydummyTimeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 10, () => {
+            const frequency = this._settings.get_int('update-interval');
+            this._pydummyTimeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, frequency, () => {
                 this._moveMouse();
                 return true; // keep running
             });
@@ -28,20 +28,21 @@ export class PydummyHandler {
     }
 
     _moveMouse() {
-        const centerX = 640;  // Screen width / 2 TODO extract screen width&height
-        const centerY = 480;  // Screen height / 2
+        // screen center
+        const centerX = 640;  
+        const centerY = 480;  
         const newX = Math.floor(Math.random() * (centerX - 50) + 50);
         const newY = Math.floor(Math.random() * (centerY - 50) + 50);
         
-        // create temp python script
-        const mouseSmoothness = 0.5; 
-        const scriptContent = `import pyautogui\nimport time\npyautogui.moveTo(${newX}, ${newY}, duration=${mouseSmoothness})`;
+        const mouseSmoothness = this._settings.get_double('mouse-smoothness');
         
+        const scriptContent = `import pyautogui\nimport time\npyautogui.moveTo(${newX}, ${newY}, duration=${mouseSmoothness})`;
         const tempScriptPath = GLib.build_filenamev([GLib.get_tmp_dir(), 'move_cursor.py']);
         
         try {
             GLib.file_set_contents(tempScriptPath, scriptContent);
             
+            // run python script
             const proc = Gio.Subprocess.new(
                 ['python3', tempScriptPath],
                 Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
@@ -51,22 +52,21 @@ export class PydummyHandler {
                 try {
                     const [, stdout, stderr] = proc.communicate_utf8_finish(res);
                     if (stderr && stderr.length > 0) {
-                        logError(new Error(`Error executing Python script: ${stderr}`));
+                        logError(new Error(`script error: ${stderr}`));
                     }
                 } catch (e) {
-                    logError(new Error(`Failed to execute Python script: ${e.message}`));
+                    logError(new Error(`run failed: ${e.message}`));
                 } finally {
-                    // clean
                     try {
                         GLib.unlink(tempScriptPath);
                     } catch (e) {
-                        logError(new Error(`Failed to remove temporary file: ${e.message}`));
+                        logError(new Error(`cleanup failed: ${e.message}`));
                     }
                 }
             });
             
         } catch (e) {
-            logError(new Error(`Failed to write or execute script: ${e.message}`));
+            logError(new Error(`script failed: ${e.message}`));
         }
     }
 }
